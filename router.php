@@ -37,7 +37,17 @@ switch ($params[0]) {
         break;
     case 'OneAnimal'://un solo animal
         //params[1]= nombre_especie / params[2]= id_especie / params[3]= nombre_raza / params[4]= id_raza
-        listOneAnimal($params[4], $params[1], $params[2]);
+        //necesito
+        //params[1]= id_raza / params[2]= nombre_raza / params[3]= id_especie / params[4]= nombre_especie
+
+        if(sizeof($params)<3){
+           // var_dump($params);
+            listOneAnimali($params[1]);
+        }else{
+            listOneAnimal($params[4], $params[1], $params[2]);
+        }
+
+        
         break;
     default:
         echo "404 not found";

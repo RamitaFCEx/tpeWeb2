@@ -18,13 +18,13 @@ function getTheSpecie($i){//busca el nombre de la especie de todos los animales 
                  .'dbname=db_zooDigital; charset=utf8', 'root','');
 
   
-    $sentencia = $db->prepare( "SELECT nombre FROM especie WHERE id = $i");
+    $sentencia = $db->prepare( "SELECT * FROM especie WHERE id = $i");
     
     $sentencia->execute();
 
     $especies = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
-    return $especies[0]->nombre;
+    return $especies;
 }
 
 

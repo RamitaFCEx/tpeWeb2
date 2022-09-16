@@ -8,9 +8,10 @@ function listAllAnimals(){
     echo "<article>";
         foreach ($razas as $raza) {
             $specie = getTheSpecie($raza->id_especie_fk);
-            $title = $raza->nombre . "<i> raza de $specie</i>";
+            $txt = $specie[0]->nombre;
+            $title = $raza->nombre . "<i> raza de $txt</i>";
             $img = $raza->nombre . ".jpg";
-            $href = "OneAnimal/$specie/" . $raza->id;
+            $href = "OneAnimal/" . $raza->id;
 
             createCard($title, $img, $href);
         }

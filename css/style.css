@@ -1,5 +1,4 @@
 
-
 article{
     margin-top: 7vh;
     display: flex;
@@ -7,19 +6,41 @@ article{
     justify-content: space-around;
 }
 
+article.home .card{
+    width: 40vw;
+}
+
+article.home .card .card-img-top{
+    height: 25vw;
+    object-fit: cover;
+}
+
+
 .card{
-    width: 41vw;
+    width: 17vw;
     margin-bottom: 7vh;
 }
 
 
 .card-img-top {
     /* max-height: 200px; */
-    height: 27vw;
-    object-fit: cover;
+    height: 11vw;
+    
+    object-fit: fill;
     
 }
 
 i{
     color: rgb(156, 156, 156);
+}
+
+div.card-body{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+a.btn{
+    margin-top: 10px;
+    
 }

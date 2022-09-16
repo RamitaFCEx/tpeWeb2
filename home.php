@@ -5,7 +5,7 @@ include_once 'card.php';
 function showHome (){
     require_once ("templates/header.php");
     ?>
-        <article>
+        <article class="home">
             <?php
                 $title = "Ver todos los animales";
                 $img = "portadaRazas.jpg";

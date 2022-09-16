@@ -18,3 +18,23 @@ function listOneAnimal($i, $esp, $id_esp){//id del animal, nombre de la especie
     echo "<a href='home' class='btn btn-outline-primary'>Home</a>";
     echo "<a href='OneSpecie/$esp/$id_esp' class='btn btn-outline-primary'>Volver a la especie</a>";
 }
+
+function listOneAnimali($i){//id del animal, nombre de la especie
+    require_once ("templates/header.php");
+    $razas = getAnimal($i);
+
+    echo "<article>";
+        foreach ($razas as $raza) {
+            $specie = getTheSpecie($raza->id_especie_fk);
+            $txt = $specie[0]->nombre;
+            $ntxt = $specie[0]->id;
+            $title = $raza->nombre . "<i> raza de $txt</i>";
+            $img = $raza->nombre . ".jpg";
+            $href = "OneAnimal/" . $raza->id;
+
+            createCard($title, $img, $href);
+        }
+    echo "</article>";
+    echo "<a href='home' class='btn btn-outline-primary'>Home</a>";
+    echo "<a href='allAnimals' class='btn btn-outline-primary'>Volver a Razas</a>";
+}
