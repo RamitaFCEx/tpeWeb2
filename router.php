@@ -26,16 +26,16 @@ switch ($params[0]) {
     case 'home':
         showHome();//echo "MOSTRAR HOME";
         break;
-    case 'allAnimals':
+    case 'allAnimals'://busca todos los animales
         listAllAnimals();
         break;
-    case 'allSpecies':
+    case 'allSpecies'://busca todas las especies
         listAllSpecies();
         break;
-    case 'OneSpecie':
+    case 'OneSpecie'://todos los animales de una especie
         listOneSpecie($params[2], $params[1]);
         break;
-    case 'OneAnimal':
+    case 'OneAnimal'://un solo animal
         listOneAnimal($params[2], $params[1]);
         break;
     default:

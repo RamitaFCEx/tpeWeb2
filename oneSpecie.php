@@ -8,7 +8,7 @@ function listOneSpecie($id_esp, $esp){
 
     echo "<article>";
         foreach ($razas as $raza) {
-            $title = $raza->nombre . "<i class='aclaracion_especie'> raza de $esp</i>";
+            $title = $raza->nombre . "<i> raza de $esp</i>";
             $img = $raza->nombre . ".jpg";
             $href = "OneAnimal/$esp/" . $raza->id;
 

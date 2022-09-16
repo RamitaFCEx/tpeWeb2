@@ -2,13 +2,13 @@
 
 require_once ("db.php");
 
-function listOneAnimal($i, $esp){
+function listOneAnimal($i, $esp){//id del animal, nombre de la especie
     require_once ("templates/header.php");
     $razas = getAnimal($i);
 
     echo "<article>";
         foreach ($razas as $raza) {
-            $title = $raza->nombre . "<i class='aclaracion_especie'> raza de $esp</i>";
+            $title = $raza->nombre . "<i> raza de $esp</i>";
             $img = $raza->nombre . ".jpg";
             $href = "OneAnimal/$esp/" . $raza->id;
 

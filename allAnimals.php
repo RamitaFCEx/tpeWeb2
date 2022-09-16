@@ -5,15 +5,12 @@ function listAllAnimals(){
     require_once ("templates/header.php");
     $razas = getAllAnimals();
 
-
-
     echo "<article>";
         foreach ($razas as $raza) {
             $specie = getTheSpecie($raza->id_especie_fk);
-            $txt= $specie[0]->nombre;
-            $title = $raza->nombre . "<i class='aclaracion_especie'> raza de $txt</i>";
+            $title = $raza->nombre . "<i> raza de $specie</i>";
             $img = $raza->nombre . ".jpg";
-            $href = "OneAnimal/$txt/" . $raza->id;
+            $href = "OneAnimal/$specie/" . $raza->id;
 
             createCard($title, $img, $href);
         }
