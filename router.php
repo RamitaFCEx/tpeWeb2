@@ -1,5 +1,7 @@
 <?php
 include_once 'home.php';
+include_once 'allAnimals.php';
+include_once 'allSpecies.php';
  
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -23,14 +25,17 @@ switch ($params[0]) {
         showHome();//echo "MOSTRAR HOME";
         break;
     case 'allAnimals':
-        require_once ("templates/header.php");
-        echo "<h1>MOSTRAR TODOS LOS ANIMALES</h1>";
-        echo "<a href='home' class='btn btn-outline-primary'>Volver</a>";
+        listAllAnimals();
+
+        
+        //echo "<h1>MOSTRAR TODOS LOS ANIMALES</h1>";
+        //echo "<a href='home' class='btn btn-outline-primary'>Volver</a>";
         break;
     case 'allSpecies':
-        require_once ("templates/header.php");
-        echo "<h1>MOSTRAR TODAS LAS ESPECIES</h1>";
-        echo "<a href='home' class='btn btn-outline-primary'>Volver</a>";
+        
+        listAllSpecies();
+        //echo "<h1>MOSTRAR TODAS LAS ESPECIES</h1>";
+        //echo "<a href='home' class='btn btn-outline-primary'>Volver</a>";
         break;
     default:
         echo "404 not found";

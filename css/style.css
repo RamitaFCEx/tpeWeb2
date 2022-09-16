@@ -3,12 +3,13 @@
 article{
     margin-top: 7vh;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
 .card{
     width: 41vw;
+    margin-bottom: 7vh;
 }
 
 
