@@ -15,6 +15,8 @@ function listOneSpecie($esp, $id_esp){//$esp solo se usa para transferir un valo
             createCard($title, $img, $href);
         }
     echo "</article>";
+    echo "<div class='botonera'>";
     echo "<a href='home' class='btn btn-outline-primary'>Home</a>";
     echo "<a href='allSpecies' class='btn btn-outline-primary'>Especies</a>";
+    echo "</div>";
 }

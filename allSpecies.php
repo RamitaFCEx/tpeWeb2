@@ -15,5 +15,7 @@ function listAllSpecies(){
             createCard($title, $img, $href);
         }
     echo "</article>";
+    echo "<div class='botonera'>";
     echo "<a href='home' class='btn btn-outline-primary'>Home</a>";
+    echo "</div>";
 }

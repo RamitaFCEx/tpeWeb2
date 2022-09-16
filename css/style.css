@@ -53,3 +53,9 @@ a.btn{
     margin-top: 10px;
     
 }
+
+.botonera{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
