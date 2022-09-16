@@ -33,7 +33,7 @@ switch ($params[0]) {
         listAllSpecies();
         break;
     case 'OneSpecie'://todos los animales de una especie
-        listOneSpecie($params[2], $params[1]);
+        listOneSpecie($params[1], $params[2]);
         break;
     case 'OneAnimal'://un solo animal
         //params[1]= nombre_especie / params[2]= id_especie / params[3]= nombre_raza / params[4]= id_raza
@@ -44,7 +44,7 @@ switch ($params[0]) {
            // var_dump($params);
             listOneAnimali($params[1]);
         }else{
-            listOneAnimal($params[4], $params[1], $params[2]);
+            listOneAnimal($params[1], $params[2], $params[4]);
         }
 
         

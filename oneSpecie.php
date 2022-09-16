@@ -2,7 +2,7 @@
 
 require_once ("db.php");
 
-function listOneSpecie($id_esp, $esp){//$esp solo se usa para transferir un valor ya buscado en la db
+function listOneSpecie($esp, $id_esp){//$esp solo se usa para transferir un valor ya buscado en la db
     require_once ("templates/header.php");
     $razas = getSpecie($id_esp);
 

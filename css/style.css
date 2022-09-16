@@ -15,6 +15,15 @@ article.home .card .card-img-top{
     object-fit: cover;
 }
 
+article.oneAnimal .card{
+    width: 50vw;
+}
+
+article.oneAnimal .card .card-img-top{
+    height: 30vw;
+    object-fit: cover;
+}
+
 
 .card{
     width: 17vw;
