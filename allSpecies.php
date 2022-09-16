@@ -15,5 +15,5 @@ function listAllSpecies(){
             createCard($title, $img, $href);
         }
     echo "</article>";
-    echo "<a href='home' class='btn btn-outline-primary'>Volver</a>";
+    echo "<a href='home' class='btn btn-outline-primary'>Home</a>";
 }
