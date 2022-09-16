@@ -13,6 +13,20 @@ function getAllAnimals(){
     return $razas;
 }
 
+function getTheSpecie($i){
+    $db = new PDO('mysql:host=localhost;'
+                 .'dbname=db_zooDigital; charset=utf8', 'root','');
+
+    $sentencia = $db->prepare( "SELECT nombre FROM especie WHERE id = $i");
+
+    $sentencia->execute();
+
+    $especies = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+    return $especies;
+}
+
+
 
 function getAllSpecies(){
     $db = new PDO('mysql:host=localhost;'

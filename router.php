@@ -33,10 +33,10 @@ switch ($params[0]) {
         listAllSpecies();
         break;
     case 'OneSpecie':
-        listOneSpecie($params[1]);
+        listOneSpecie($params[2], $params[1]);
         break;
     case 'OneAnimal':
-        listOneAnimal($params[1]);
+        listOneAnimal($params[2], $params[1]);
         break;
     default:
         echo "404 not found";

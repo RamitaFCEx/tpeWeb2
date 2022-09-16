@@ -10,7 +10,7 @@ function listAllSpecies(){
         foreach ($especies as $especie) {
             $title = $especie->nombre;
             $img =  "especies/". $especie->nombre . ".jpg";
-            $href =   "OneSpecie/" . $especie->id;
+            $href =   "OneSpecie/"  . "$especie->nombre/" . $especie->id;
 
             createCard($title, $img, $href);
         }
