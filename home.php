@@ -7,18 +7,14 @@ function showHome (){
     ?>
         <article>
             <?php
-            // incluyo el archivo que tiene las noticias
-            //$noticias = getNoticias();
                 $title = "Ver todos los animales";
                 $img = "portadaRazas.jpg";
                 $href = "allAnimals";
-
                 createCard($title, $img, $href);
 
                 $title = "Ver todas las especies";
                 $img = "siluetasEspecies.jpg";
                 $href = "allSpecies";
-
                 createCard($title, $img, $href);
 
             ?>

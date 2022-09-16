@@ -1,9 +1,10 @@
 <?php
+
 require_once ("db.php");
 
-function listAllAnimals(){
+function listOneAnimal($i){
     require_once ("templates/header.php");
-    $razas = getAllAnimals();
+    $razas = getAnimal($i);
 
     echo "<article>";
         foreach ($razas as $raza) {
