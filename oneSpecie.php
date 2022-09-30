@@ -11,8 +11,9 @@ function listOneSpecie($esp, $id_esp){//$esp solo se usa para transferir un valo
             $title = $raza->nombre . "<i> raza de $esp</i>";
             $img = $raza->nombre . ".jpg";
             $href = "OneAnimal/$esp/$id_esp/$raza->nombre/" . $raza->id;
+            $descrip = $esp . " " . $raza->color;
 
-            createCard($title, $img, $href);
+            createCard($title, $img, $href, $descrip);
         }
     echo "</article>";
     echo "<div class='botonera'>";

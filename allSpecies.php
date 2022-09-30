@@ -11,8 +11,9 @@ function listAllSpecies(){
             $title = $especie->nombre;
             $img =  "especies/". $especie->nombre . ".jpg";
             $href =   "OneSpecie/"  . "$especie->nombre/" . $especie->id;
+            $descrip = $especie->descripcion;
 
-            createCard($title, $img, $href);
+            createCard($title, $img, $href, $descrip);
         }
     echo "</article>";
     echo "<div class='botonera'>";

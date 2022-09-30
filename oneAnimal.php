@@ -12,8 +12,9 @@ function listOneAnimal($esp, $id_esp, $i){//id del animal, nombre de la especie
             $title = $raza->nombre . "<i> raza de $esp</i>";
             $img = $raza->nombre . ".jpg";
             $href = "OneAnimal/$esp/$id_esp/$raza->nombre/" . $raza->id;
+            $detail = $raza->descripcion;
 
-            createCard($title, $img, $href);
+            createCard($title, $img, $href, $detail);
         }
     echo "</article>";
     echo "<div class='botonera'>";
@@ -32,10 +33,11 @@ function listOneAnimali($i){//id del animal, nombre de la especie
             $txt = $specie[0]->nombre;
             $ntxt = $specie[0]->id;
             $title = $raza->nombre . "<i> raza de $txt</i>";
+            $detail = $raza->descripcion;
             $img = $raza->nombre . ".jpg";
             $href = "OneAnimal/" . $raza->id;
 
-            createCard($title, $img, $href);
+            createCard($title, $img, $href, $detail);
         }
     echo "</article>";
     echo "<div class='botonera'>";
