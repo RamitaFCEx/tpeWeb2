@@ -1,14 +1,23 @@
 {include file="header.tpl"}
 
-<article>
-    {foreach from=$razas item=$raza}
+<article class={$classArt}>
+{foreach from=$razas item=$raza}
+    {if $oneSpecie}
         {include file='card.tpl' 
                     title=$raza->nombre|cat: "<i>"|cat: " raza de "|cat: $raza->especie|cat: "</i>"
                     img=$raza->nombre  
-                    href="OneAnimal/"|cat: $raza->id|cat:"/"|cat: $raza->id_especie_fk  
+                    href="OneAnimal/"|cat: $raza->id|cat:"/"|cat: $raza->id_especie_fk
+                    details=$raza->descripcion
+        } 
+    {else}
+        {include file='card.tpl' 
+                    title=$raza->nombre|cat: "<i>"|cat: " raza de "|cat: $raza->especie|cat: "</i>"
+                    img=$raza->nombre  
+                    href="OneAnimal/"|cat: $raza->id|cat:"/"|cat: $raza->id_especie_fk
                     details=$raza->nombre|cat: " "|cat: $raza->color 
         } 
-    {/foreach}
+    {/if}
+{/foreach}
            
 </article>
 
@@ -22,3 +31,5 @@
         <a href='OneSpecie/{$raza->id_especie_fk}' class='btn btn-outline-primary'>ir a la especie</a>
     {/if}
 </div>
+
+{include file="footer.tpl"}

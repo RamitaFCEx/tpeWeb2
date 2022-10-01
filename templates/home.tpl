@@ -11,3 +11,5 @@
     {/foreach}
            
 </article>
+
+{include file="footer.tpl"}

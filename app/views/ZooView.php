@@ -15,9 +15,11 @@ class ZooView{
         if($razas!=null && sizeof($razas)>=1){
             $oneSpecie = false;
             $lotsSpecies = true;
+            $classArt = "none";
 
             if(sizeof($razas)==1){
                 $oneSpecie = true;
+                $classArt = "oneAnimal";
             }else{
                 for ($i=1; $i < sizeof($razas); $i++) { 
                     if($razas[$i]->id_especie_fk != $razas[0]->id_especie_fk){
@@ -25,6 +27,7 @@ class ZooView{
                     }
                 }
             }
+            $smarty->assign('classArt', $classArt);
             $smarty->assign('lotsSpecies', $lotsSpecies);
             $smarty->assign('oneSpecie', $oneSpecie);
             $smarty->display('././templates/allAnimals.tpl');

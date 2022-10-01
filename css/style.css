@@ -3,6 +3,7 @@ article{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    min-height: 81vh;
 }
 
 article.home .card{
@@ -23,6 +24,23 @@ article.oneAnimal .card .card-img-top{
     object-fit: cover;
 }
 
+article.allSpecies div.card{
+    width: 27vw;
+}
+
+article.allSpecies .card .card-img-top{
+    height: 19vw;
+    object-fit: contain;
+}
+
+article.oneAnimal div.card{
+    width: 60vw;
+}
+
+article.oneAnimal .card .card-img-top{
+    height: 35vw;
+    object-fit: fill;
+}
 
 .card{
     width: 17vw;
@@ -58,3 +76,23 @@ a.btn{
     display: flex;
     justify-content: space-around;
 }
+
+
+footer{
+    background-color: rgb(228, 228, 228);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-style: italic;
+    font-weight: bolder;
+    min-height: 12vh;
+    justify-content: space-between;
+}
+
+footer div.redes{
+    margin-bottom: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
