@@ -12,9 +12,5 @@
            
 </article>
 
-<div class='botonera'>
-    <a href='home' class='btn btn-outline-primary'>Home</a>
-    <a href='allAnimals' class='btn btn-outline-primary'>ir a animales</a>
-</div>
-
+{include file="inferiorNav.tpl" lotsSpecies=true oneSpecie=false items=false}
 {include file="footer.tpl"}
