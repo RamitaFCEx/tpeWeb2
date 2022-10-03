@@ -12,5 +12,5 @@
            
 </article>
 
-{include file="inferiorNav.tpl" lotsSpecies=true oneSpecie=false items=false}
+{include file="inferiorNav.tpl" buttons=$buttons}
 {include file="footer.tpl"}

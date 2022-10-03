@@ -20,5 +20,5 @@
     {/foreach}
 </article>
 
-{include file="inferiorNav.tpl" lotsSpecies=$lotsSpecies oneSpecie=$oneSpecie items=true}
+{include file="inferiorNav.tpl" buttons=$buttons}
 {include file="footer.tpl"}
