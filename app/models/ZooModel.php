@@ -7,7 +7,7 @@ class ZooModel{
         return $db;
     }
 
-    function getAllAnimals(){//busca todos los animales de la tabla raza y hace join con la tabla especies, necesario para el titulo
+    function getallAnimals(){//busca todos los animales de la tabla raza y hace join con la tabla especies, necesario para el titulo
         $db = $this->conect();
     
         $sentencia = $db->prepare( "SELECT raza.*,especie.nombre as especie FROM raza JOIN especie ON raza.id_especie_fk = especie.id");
@@ -31,7 +31,7 @@ class ZooModel{
         return $especies;
     }
 
-    function getAllAnimalsOfSpecie($idSpecie){//busca todos los animales de la tabla raza y hace join con la tabla especies, necesario para el titulo
+    function getallAnimalsOfSpecie($idSpecie){//busca todos los animales de la tabla raza y hace join con la tabla especies, necesario para el titulo
         $db = $this->conect();
     
         $sentencia = $db->prepare( "SELECT raza.*,especie.nombre as especie FROM raza JOIN especie ON raza.id_especie_fk = especie.id WHERE raza.id_especie_fk = $idSpecie");

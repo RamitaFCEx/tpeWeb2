@@ -17,11 +17,11 @@ class ZooController{
         $this->view = new ZooView();
         $this->buttonAnimals = (object) [
             'sign' => "Ir a animales",
-            'ref' => "allAnimals",
+            'ref' => "all_animals",
         ];
         $this->buttonSpecies = (object) [
             'sign' => "Ir a especies",
-            'ref' => "allSpecies",
+            'ref' => "all_species",
         ];
     
     }
@@ -30,14 +30,14 @@ class ZooController{
         $cardHomeAnimales = (object) [
             'title' => "Ver todos los animales",
             'img' => "portadaRazas",
-            'href' => "allAnimals",
+            'href' => "all_animals",
             'descrip' => "Descubre todos nuestros animales ヽ(✿ﾟ▽ﾟ)ノ",
         ];
 
         $cardHomeEspecies = (object) [
             'title' => "Ver todas las especies",
             'img' => "siluetasEspecies",
-            'href' => "allSpecies",
+            'href' => "all_species",
             'descrip' => "Descubre todas nuestras especies ヽ(✿ﾟ▽ﾟ)ノ",
         ];
 
@@ -46,11 +46,11 @@ class ZooController{
         $this->view->showHome($arrayCards);
     } 
 
-    function listAllAnimals(){//muestra todos los items join con categorias
-        $razas = $this->model->getAllAnimals();
+    function listallAnimals(){//muestra todos los items join con categorias
+        $razas = $this->model->getallAnimals();
         $buttons = [$this->buttonSpecies];
 
-        $this->view->showAllAnimals($razas, $buttons); 
+        $this->view->showAnimals($razas, $buttons); 
     }
 
     function listAllSpecies(){//muestra todas las categorias
@@ -61,22 +61,22 @@ class ZooController{
     }
 
     function listOneSpecie($idSpecie){//muesrta los items de una categoria
-        $specie = $this->model->getAllAnimalsOfSpecie($idSpecie);//trae todos los items
+        $specie = $this->model->getallAnimalsOfSpecie($idSpecie);//trae todos los items
         $buttons = [$this->buttonSpecies, $this->buttonAnimals];
 
-        $this->view->showAllAnimals($specie, $buttons); 
+        $this->view->showAnimals($specie, $buttons); 
     }
 
     function listOneAnimal($id){//muestra todos los items join con categorias
         $razas = $this->model->getOneAnimal($id);
         $buttonSpecie = (object) [
             'sign' => "Ir a la especie",
-            'ref' => "OneSpecie/".$razas[0]->id_especie_fk,
+            'ref' => "one_species/".$razas[0]->id_especie_fk,
         ]; 
         $buttons = [$this->buttonSpecies, $this->buttonAnimals, $buttonSpecie];
 
 
-        $this->view->showAllAnimals($razas, $buttons); 
+        $this->view->showAnimals($razas, $buttons); 
     }
     
 }

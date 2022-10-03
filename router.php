@@ -24,19 +24,19 @@ switch ($params[0]) {
         $controller = new ZooController;
         $controller->goHome();
         break;
-    case 'allAnimals'://busca todos los animales
+    case 'all_animals'://busca todos los animales
         $controller = new ZooController;
-        $controller->listAllAnimals();
+        $controller->listallAnimals();
         break;
-    case 'allSpecies'://busca todas las especies
+    case 'all_species'://busca todas las especies
         $controller = new ZooController;
         $controller->listAllSpecies();
         break;
-    case 'OneSpecie'://todos los animales de una especie
+    case 'one_species'://todos los animales de una especie
         $controller = new ZooController;
         $controller->listOneSpecie($params[1]);
         break;
-    case 'OneAnimal'://un solo animal
+    case 'animal'://un solo animal
         $controller = new ZooController;
         $controller->listOneAnimal($params[1], $params[2]);
         break;

@@ -5,7 +5,7 @@
                 {include file='card.tpl' 
                          title=$spe->nombre
                          img="especies/"|cat: $spe->nombre  
-                         href="OneSpecie/"|cat: $spe->id  
+                         href="one_species/"|cat: $spe->id  
                          details=$spe->descripcion
                 } 
     {/foreach}

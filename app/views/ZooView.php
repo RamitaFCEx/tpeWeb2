@@ -9,7 +9,7 @@ class ZooView{
         $smarty->display('././templates/home.tpl');
     }
 
-    function showAllAnimals($razas, $buttons){
+    function showAnimals($razas, $buttons){
         $smarty = new Smarty();
         if($razas!=null && sizeof($razas)>=1){
             $classArt = "none";
@@ -24,7 +24,7 @@ class ZooView{
             $smarty->assign('razas', $razas);
             $smarty->assign('buttons', $buttons);
             $smarty->assign('classArt', $classArt);
-            $smarty->display('././templates/allAnimals.tpl');
+            $smarty->display('././templates/animals.tpl');
         }
     }
 
@@ -32,7 +32,7 @@ class ZooView{
         $smarty = new Smarty();
         $smarty->assign('buttons', $buttons);
         $smarty->assign('species', $species);
-        $smarty->display('././templates/allSpecies.tpl');
+        $smarty->display('././templates/species.tpl');
     }
 
 
