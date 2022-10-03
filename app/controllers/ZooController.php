@@ -46,8 +46,8 @@ class ZooController{
         $this->view->showHome($arrayCards);
     } 
 
-    function listallAnimals(){//muestra todos los items join con categorias
-        $razas = $this->model->getallAnimals();
+    function listAllAnimals(){//muestra todos los items join con categorias
+        $razas = $this->model->getAllAnimals();
         $buttons = [$this->buttonSpecies];
 
         $this->view->showAnimals($razas, $buttons); 
@@ -61,7 +61,7 @@ class ZooController{
     }
 
     function listOneSpecie($idSpecie){//muesrta los items de una categoria
-        $specie = $this->model->getallAnimalsOfSpecie($idSpecie);//trae todos los items
+        $specie = $this->model->getAllAnimalsOfSpecie($idSpecie);//trae todos los items
         $buttons = [$this->buttonSpecies, $this->buttonAnimals];
 
         $this->view->showAnimals($specie, $buttons); 

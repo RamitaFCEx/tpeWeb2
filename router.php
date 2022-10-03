@@ -26,7 +26,7 @@ switch ($params[0]) {
         break;
     case 'all_animals'://busca todos los animales
         $controller = new ZooController;
-        $controller->listallAnimals();
+        $controller->listAllAnimals();
         break;
     case 'all_species'://busca todas las especies
         $controller = new ZooController;
