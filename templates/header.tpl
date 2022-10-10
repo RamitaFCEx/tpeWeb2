@@ -14,21 +14,27 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="home">ZooDigital</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="allAnimals">Razas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="allSpecies">Especies</a>
-                  </li>
-                  
-                </ul>
-              </div>
+                <a class="navbar-brand" href="home">ZooDigital</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="all_animals">Razas</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="all_species">Especies</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="admin">Admin</a>
+                      </li>
+                      
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-nav ml-auto">
+              <a class="nav-item nav-link" href="logout">LOGOUT</a>
             </div>
           </nav>
     </header>

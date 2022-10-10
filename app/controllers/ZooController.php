@@ -1,16 +1,12 @@
 <?php
 include_once 'app/models/ZooModel.php';
 include_once 'app/views/ZooView.php';
+include_once 'Controller.php';
 
-
-
-
-
-class ZooController{
+class ZooController extends Controller{
     private $buttonSpecies;
     private $buttonAnimals;
-    private $model;
-    private $view;
+    
 
     function __construct(){ 
         $this->model = new ZooModel();
@@ -57,7 +53,7 @@ class ZooController{
         $species = $this->model->getAllSpecies();
         $buttons = [$this->buttonAnimals];
 
-        $this->view->showAllSpecies($species, $buttons); 
+        $this->view->showSpecies($species, $buttons); 
     }
 
     function listOneSpecie($idSpecie){//muesrta los items de una categoria

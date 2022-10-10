@@ -1,9 +1,15 @@
 <?php
 include_once './app/controllers/ZooController.php';
-
-
+include_once './app/controllers/AdminController.php';
  
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+
+define('HOME', 'Location: http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/');
+
+
+define('VERIFIED', 'Location: http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/verified');
+
+
 
 
 
@@ -40,6 +46,30 @@ switch ($params[0]) {
         $controller = new ZooController;
         $controller->listOneAnimal($params[1], $params[2]);
         break;
+    case 'admin':
+        $controller = new AdminController;
+        $controller->goAdminLogin();
+        break;
+    case 'verify':
+        $controller = new AdminController;
+        $controller->verifyAdmin();
+        break;
+    case 'verified':
+        $controller = new AdminController;
+        $controller->showPanel();
+        break;
+    case 'logout': 
+            $controller = new AdminController();
+            $controller->logout();
+            break;
+    case 'abmItem': 
+            $controller = new AdminController();
+            $controller->abmItem();
+            break;
+    case 'abmCat': 
+            $controller = new AdminController();
+            $controller->abmCat();
+            break;
     default:
         echo "404 not found";
         break;

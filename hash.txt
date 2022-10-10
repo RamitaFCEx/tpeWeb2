@@ -1,0 +1,3 @@
+$clave = "algo";
+$claveHash = password_hash($clave, PASSWORD_BCRYPT);
+echo $clave . " hasheada es " . $claveHash;

@@ -42,6 +42,11 @@ article.oneAnimal .card .card-img-top{
     object-fit: fill;
 }
 
+article.adminPanel form{
+    display: flex;
+    flex-direction: column;
+}
+
 .card{
     width: 17vw;
     margin-bottom: 7vh;
