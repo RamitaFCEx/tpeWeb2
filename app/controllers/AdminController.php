@@ -40,7 +40,8 @@ class AdminController extends Controller{
         session_start();
         if(isset($_SESSION['name'])){
             $species = $this->zoomodel->getAllSpecies();
-            $this->view->showAdminPanel($species);
+            $animals = $this->zoomodel->getAllAnimals();
+            $this->view->showAdminPanel($species, $animals);
         }else{
             header(HOME);
         }

@@ -1,56 +1,111 @@
 console.log("Se conecto el javascript");
 
 
-let selectABM = document.querySelector("#selectABM");
+let selectABMCat = document.querySelector("#selectABMCat");
+selectABMCat.addEventListener('change', function(){
+    let tipo = document.querySelectorAll(".tipo");
+    let nombre = document.querySelectorAll(".nombre");
+    let descripcion = document.querySelectorAll(".descripcion");
 
-selectABM.addEventListener('change', function(){
-    
-    switch (selectABM.value) {
+    switch (selectABMCat.value) {
         case 'a':
-            document.querySelectorAll(".tipo").forEach((el) => {
+            tipo.forEach((el) => {
                 el.classList.add('hide');
             });
 
-            document.querySelectorAll(".nombre").forEach((el) => {
+            nombre.forEach((el) => {
                 el.classList.remove('hide');
             });
 
-            document.querySelectorAll(".descripcion").forEach((el) => {
+            descripcion.forEach((el) => {
                 el.classList.remove('hide');
             });
 
             break;
         case 'b':
-            document.querySelectorAll(".tipo").forEach((el) => {
+            tipo.forEach((el) => {
                 el.classList.remove('hide');
             });
 
-            document.querySelectorAll(".nombre").forEach((el) => {
+            nombre.forEach((el) => {
                 el.classList.add('hide');
             });
 
-            document.querySelectorAll(".descripcion").forEach((el) => {
+            descripcion.forEach((el) => {
                 el.classList.add('hide');
             });
             
             break;
         case 'm':
-            document.querySelectorAll(".tipo").forEach((el) => {
+            tipo.forEach((el) => {
                 el.classList.remove('hide');
             });
 
-            document.querySelectorAll(".nombre").forEach((el) => {
+            nombre.forEach((el) => {
                 el.classList.remove('hide');
             });
 
-            document.querySelectorAll(".descripcion").forEach((el) => {
+            descripcion.forEach((el) => {
                 el.classList.remove('hide');
             });
             break;
     
         default:
             break;
-    }
+    }    
+});
 
+
+let selectABMIt = document.querySelector("#selectABMIt");
+selectABMIt.addEventListener('change', function(){
+    let especie = document.querySelectorAll(".especie");
+    let animal = document.querySelectorAll(".animaL");
+    let caracteristicas = document.querySelectorAll(".caracteristica");
+
+    switch (selectABMIt.value) {
+        case 'a':
+            especie.forEach((el) => {
+                el.classList.remove('hide');
+            });
+
+            animal.forEach((el) => {
+                el.classList.add('hide');
+            });
+
+            caracteristicas.forEach((el) => {
+                el.classList.remove('hide');
+            });
+
+            break;
+        case 'b':
+            especie.forEach((el) => {
+                el.classList.add('hide');
+            });
+
+            animal.forEach((el) => {
+                el.classList.remove('hide');
+            });
+
+            caracteristicas.forEach((el) => {
+                el.classList.add('hide');
+            });
+            
+            break;
+        case 'm':
+            especie.forEach((el) => {
+                el.classList.add('hide');
+            });
+
+            animal.forEach((el) => {
+                el.classList.remove('hide');
+            });
+
+            caracteristicas.forEach((el) => {
+                el.classList.remove('hide');
+            });
+            break;
     
+        default:
+            break;
+    }        
 });
