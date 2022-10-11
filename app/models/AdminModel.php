@@ -11,8 +11,8 @@ class AdminModel{
     public function getByUseremail($useremail) {
         $db = $this->conect();
     
-        $sentencia = $db->prepare( "SELECT * FROM usuarios WHERE email = '$useremail'");
-        $sentencia->execute();
+        $sentencia = $db->prepare( "SELECT * FROM usuarios WHERE email = ?");
+        $sentencia->execute(array($useremail));
     
         $user = $sentencia->fetchAll(PDO::FETCH_OBJ);
         

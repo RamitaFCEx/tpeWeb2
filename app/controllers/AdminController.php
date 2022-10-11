@@ -76,38 +76,40 @@ class AdminController extends Controller{
 
 
     public function abmItem() {
-        if(isset($_POST['tipo'])&&!empty($_POST['tipo'])
-           &&isset($_POST['nombre'])&&!empty($_POST['nombre'])
-           &&isset($_POST['color'])&&!empty($_POST['color'])
-           &&isset($_POST['descripcion'])&&!empty($_POST['descripcion'])
-           &&isset($_POST['abm'])){
+        $data = new stdClass();
+        $data->abm = $_POST['abm'];
 
-            $data = new stdClass();
-            $data->nombre = $_POST['nombre'];
-            $data->color = $_POST['color'];
-            $data->descripcion = $_POST['descripcion'];
-            $data->tipo = $_POST['tipo'];
-            $data->abm = $_POST['abm'];
-
-            switch ($_POST['abm']) {
-                case 'a':
-                    var_dump($data);
-                    break;
-                case 'b':
-                    var_dump($data);
-                    break;
-                case 'm': 
-                    var_dump($data);
-                    break;
-                default:
-                    echo "<h1>Error 404 - Page not found </h1>";
-                    break;
-            }
-
-
-        }else{
-            header(VERIFIED);
+        switch ($data->abm) {
+            case 'a':
+                $data->especie = $_POST['especie'];//de las que existen en la bd
+                $data->nombre = $_POST['nombre'];//nuevo
+                $data->color = $_POST['color'];
+                $data->descripcion = $_POST['descripcion'];
+                if($this->checkVoid($data)){
+                    $this->zoomodel->addItem($data);
+                }
+                break;
+            case 'b':
+                $data->animal = $_POST['animal'];//de los que existen en la bd
+                if($this->checkVoid($data) && $data->animal != '0'){
+                    $this->zoomodel->deleteItem($data);
+                }
+                break;
+            case 'm': 
+                $data->especie = $_POST['especie'];
+                $data->animal = $_POST['animal'];//de los que existen en la bd
+                $data->nombre = $_POST['nombre'];//nuevo
+                $data->color = $_POST['color'];
+                $data->descripcion = $_POST['descripcion'];
+                if($this->checkVoid($data)){
+                    $this->zoomodel->modItem($data);
+                }
+                break;
+            default:
+                header(VERIFIED);
+                break;
         }
+        header(VERIFIED);
     }
 
     public function abmCat() {
@@ -124,7 +126,7 @@ class AdminController extends Controller{
                 break;
             case 'b':
                 $data->tipo = $_POST['tipo'];
-                if($this->checkVoid($data)){
+                if($this->checkVoid($data) && $data->tipo != '0'){
                     $this->zoomodel->deleteCat($data);
                 }
                 break;

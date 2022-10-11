@@ -93,7 +93,7 @@ selectABMIt.addEventListener('change', function(){
             break;
         case 'm':
             especie.forEach((el) => {
-                el.classList.add('hide');
+                el.classList.remove('hide');
             });
 
             animal.forEach((el) => {

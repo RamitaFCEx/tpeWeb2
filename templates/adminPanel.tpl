@@ -1,10 +1,10 @@
 {include file="header.tpl"}
 
 <article class="adminPanel">
-    
 
     <form action="abmItem" method="POST">
         <h2>ABM Items</h2>
+        <small>*Todos los campos deben ser rellenados*</small>
 
         <label for="abm">Accion</label>
         <select name="abm" id="selectABMIt">
@@ -15,13 +15,14 @@
 
         <label for="animal" class="animaL hide">Animal</label>
         <select name="animal" id="selectABMIt" class="animaL hide">
+            <option value="0">Animal</option>
             {foreach from=$animals item=$animal}
                 <option value="{$animal->id}">{$animal->nombre}</option>
             {/foreach}
         </select>
 
-        <label class="especie">Es un:</label>
-        <select name="" class="especie">
+        <label for="especie" class="especie">Es un:</label>
+        <select name="especie" class="especie">
             {foreach from=$species item=$specie}
                 <option value="{$specie->id}">{$specie->nombre}</option>
             {/foreach}
@@ -34,8 +35,7 @@
         <input type="text" name="color" class="caracteristica"> 
 
         <label for="descripcion" class="caracteristica">Descripcion</label>
-        <textarea name="descripcion" rows="4" cols="50" class="caracteristica">
-        </textarea>
+        <textarea name="descripcion" rows="4" cols="50" class="caracteristica"></textarea>
 
         <button type="submit" class="btn btn-dark mt-4">Enviar</button>
     </form>
@@ -64,8 +64,7 @@
         <input type="text" name="nombre" class="nombre">
 
         <label for="descripcion" class="descripcion">Descripcion</label>
-        <textarea name="descripcion" rows="4" cols="50" class="descripcion">
-        </textarea>
+        <textarea name="descripcion" rows="4" cols="50" class="descripcion"></textarea>
         
         
     
