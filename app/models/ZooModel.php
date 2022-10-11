@@ -53,4 +53,33 @@ class ZooModel{
         return $razas;
     }
 
+
+    function addCat($data){
+        $db = $this->conect();
+
+        $sentencia = $db->prepare( "INSERT INTO especie(nombre, descripcion)"
+        ."VALUES(?, ?)");
+
+        $sentencia->execute(array($data->nombre, $data->descripcion));
+        
+    }
+
+    function deleteCat($data){
+        $db = $this->conect();
+        if($data->tipo != '0'){
+            $sentencia = $db->prepare( "DELETE FROM especie WHERE id=?");
+            $sentencia->execute(array($data->tipo));
+        }
+    }
+
+    function modCat($data){
+        $db = $this->conect();
+
+        $sentencia = $db->prepare("UPDATE especie SET nombre='$data->nombre',descripcion='$data->descripcion' WHERE id=$data->tipo");
+        
+        $sentencia->execute();
+    }
+
+
+
 }

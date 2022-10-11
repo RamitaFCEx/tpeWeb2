@@ -46,15 +46,15 @@ switch ($params[0]) {
         $controller = new ZooController;
         $controller->listOneAnimal($params[1], $params[2]);
         break;
-    case 'admin':
+    case 'admin'://entro a login con boton admin
         $controller = new AdminController;
         $controller->goAdminLogin();
         break;
-    case 'verify':
+    case 'verify'://envio el formulario con mis datos para ser verificado
         $controller = new AdminController;
         $controller->verifyAdmin();
         break;
-    case 'verified':
+    case 'verified'://me verifican
         $controller = new AdminController;
         $controller->showPanel();
         break;

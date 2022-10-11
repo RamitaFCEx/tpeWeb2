@@ -70,40 +70,89 @@ class AdminController extends Controller{
     }////////////////////////////////////////////////////////////////////////
     
 
+
+
+
+
     public function abmItem() {
         if(isset($_POST['tipo'])&&!empty($_POST['tipo'])
            &&isset($_POST['nombre'])&&!empty($_POST['nombre'])
            &&isset($_POST['color'])&&!empty($_POST['color'])
            &&isset($_POST['descripcion'])&&!empty($_POST['descripcion'])
            &&isset($_POST['abm'])){
-            $tipo = $_POST['tipo'];
-            $nombre = $_POST['nombre'];
-            $color = $_POST['color'];
-            $descripcion = $_POST['descripcion'];
-            $abm = $_POST['abm'];
 
-            $data = [$nombre, $_POST['color'], $_POST['descripcion'], $_POST['abm'], $tipo];
+            $data = new stdClass();
+            $data->nombre = $_POST['nombre'];
+            $data->color = $_POST['color'];
+            $data->descripcion = $_POST['descripcion'];
+            $data->tipo = $_POST['tipo'];
+            $data->abm = $_POST['abm'];
 
-            var_dump($data);
+            switch ($_POST['abm']) {
+                case 'a':
+                    var_dump($data);
+                    break;
+                case 'b':
+                    var_dump($data);
+                    break;
+                case 'm': 
+                    var_dump($data);
+                    break;
+                default:
+                    echo "<h1>Error 404 - Page not found </h1>";
+                    break;
+            }
+
+
         }else{
             header(VERIFIED);
         }
     }
 
     public function abmCat() {
-        if(isset($_POST['nombre'])&&!empty($_POST['nombre'])
-           &&isset($_POST['descripcion'])&&!empty($_POST['descripcion'])
-           &&isset($_POST['abm'])){
-            $nombre = $_POST['nombre'];
-            $descripcion = $_POST['descripcion'];
-            $abm = $_POST['abm'];
+        $data = new stdClass();
+        $data->abm = $_POST['abm'];
 
-            $data = [$nombre, $_POST['descripcion'], $_POST['abm']];
-
-            var_dump($data);
-        }else{
-            header(VERIFIED);
+        switch ($data->abm) {
+            case 'a':
+                $data->nombre = $_POST['nombre'];
+                $data->descripcion = $_POST['descripcion'];
+                if($this->checkVoid($data)){
+                    $this->zoomodel->addCat($data);
+                }
+                break;
+            case 'b':
+                $data->tipo = $_POST['tipo'];
+                if($this->checkVoid($data)){
+                    $this->zoomodel->deleteCat($data);
+                }
+                break;
+            case 'm': 
+                $data->tipo = $_POST['tipo'];
+                $data->nombre = $_POST['nombre'];
+                $data->descripcion = $_POST['descripcion'];
+                if($this->checkVoid($data)){
+                    $this->zoomodel->modCat($data);
+                }
+                break;
+            default:
+                header(VERIFIED);
+                break;
         }
+        header(VERIFIED);
     }
+
+    function checkVoid($data){
+        $response = true;
+        foreach ($data as $d) {
+            if($d == null || $d == "" || ctype_space($d)){
+                $response = false;
+            }
+        }
+        return $response;
+    }
+
+
+
 
 }

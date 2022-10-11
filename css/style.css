@@ -101,3 +101,11 @@ footer div.redes{
     justify-content: space-around;
 }
 
+
+.show{
+    border: 2px solid red;
+}
+
+.hide{
+    display: none;
+}

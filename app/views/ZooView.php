@@ -31,6 +31,8 @@ class ZooView{
             $smarty->assign('buttons', $buttons);
             $smarty->assign('classArt', $classArt);
             $smarty->display('././templates/animals.tpl');
+        }else{
+            header(HOME);
         }
     }
 
