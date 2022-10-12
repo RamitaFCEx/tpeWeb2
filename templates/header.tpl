@@ -27,17 +27,14 @@
                         <a class="nav-link" href="all_species">Especies</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="admin">Login</a>
+                        <a class="nav-link" href="login">Sesion</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="verified">Editar</a>
+                        <a class="nav-link" href="verified/admin">Editar</a>
                       </li>
                       
                     </ul>
                 </div>
-            </div>
-            <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link" href="logout">LOGOUT</a>
             </div>
           </nav>
     </header>

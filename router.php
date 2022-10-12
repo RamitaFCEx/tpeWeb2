@@ -10,6 +10,8 @@ define('HOME', 'Location: http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['P
 define('VERIFIED', 'Location: http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/verified');
 
 
+define('LOGIN', 'Location: http://'.$_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']).'/login');
+
 
 
 
@@ -46,30 +48,30 @@ switch ($params[0]) {
         $controller = new ZooController;
         $controller->listOneAnimal($params[1], $params[2]);
         break;
-    case 'admin'://entro a login con boton admin
+    case 'login'://entro a login con boton admin
         $controller = new AdminController;
         $controller->goAdminLogin();
         break;
-    case 'verify'://envio el formulario con mis datos para ser verificado
+    case 'verify_data'://envio el formulario con mis datos para ser verificado
         $controller = new AdminController;
         $controller->verifyAdmin();
         break;
     case 'verified'://me verifican
         $controller = new AdminController;
-        $controller->showPanel();
+        $controller->showPanel($params[1]);
         break;
     case 'logout': 
-            $controller = new AdminController();
-            $controller->logout();
-            break;
+        $controller = new AdminController();
+        $controller->logout();
+        break;
     case 'abmItem': 
-            $controller = new AdminController();
-            $controller->abmItem();
-            break;
+        $controller = new AdminController();
+        $controller->abmItem();
+        break;
     case 'abmCat': 
-            $controller = new AdminController();
-            $controller->abmCat();
-            break;
+        $controller = new AdminController();
+        $controller->abmCat();
+        break;
     default:
         echo "404 not found";
         break;

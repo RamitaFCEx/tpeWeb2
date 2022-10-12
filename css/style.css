@@ -42,6 +42,18 @@ article.oneAnimal .card .card-img-top{
     object-fit: fill;
 }
 
+article.adminPanel{
+    display: flex;
+    flex-direction: column;
+}
+
+article.adminPanel div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 4vh;
+}
+
 article.adminPanel form{
     display: flex;
     flex-direction: column;
@@ -101,10 +113,6 @@ footer div.redes{
     justify-content: space-around;
 }
 
-
-.show{
-    border: 2px solid red;
-}
 
 .hide{
     display: none;

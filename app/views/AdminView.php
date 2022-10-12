@@ -9,16 +9,19 @@ class AdminView{
         $this->smarty->assign('basehref', BASE_URL);
     }
 
-    function showAdminLogin($error){
+    public function showAdminLogin($error){
         $smarty = new Smarty();
         $smarty->assign('error', $error);
         $smarty->display('././templates/adminLogin.tpl');
     }
 
-    function showAdminPanel($species, $animals){
+    public function showAdminPanel($species, $animals, $param, $succes){
         $smarty = new Smarty(); 
         $smarty->assign('species', $species);
         $smarty->assign('animals', $animals);
+        $smarty->assign('param', $param);
+        $smarty->assign('succes', $succes);
+        
         $smarty->display('././templates/adminPanel.tpl');
     }
   

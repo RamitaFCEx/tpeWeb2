@@ -2,9 +2,9 @@
 
 <article class="home">
     <div>
-        <p>{$error}</p>
+        <p class="alert alert-danger {if $error == ""} hide{/if} ">{$error}</p>
     </div>
-    <form action="verify" method="POST">
+    <form action="verify_data" method="POST">
         <h2>Login</h2>
         <div>
             <input type="text" name="email" placeholder="Ingrese su email..."/>
@@ -15,9 +15,15 @@
             <small>*1989</small>
         </div>
     
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-success mt-2">Iniciar sesion</button>
+
+
+        <div>
+            <a class="btn btn-danger" href="logout">Cerrar sesion</a>
+        </div>
+        
     </form>
-           
+    
 </article>
 
 {include file="footer.tpl"}

@@ -16,7 +16,6 @@ class AdminController extends Controller{
     }
 
     public function goAdminLogin(){
-        //$this->checkLoggedIn();Traba todo
         $this->view->showAdminLogin("");
     }
 
@@ -24,42 +23,59 @@ class AdminController extends Controller{
         $useremail = $_POST['email'];
         $password = $_POST['password'];
         $user = $this->model->getByUseremail($useremail);
-
-        //var_dump($user);
         // encontró un user con el username que mandó, y tiene la misma contraseña
         if (!empty($user) && password_verify($password, $user[0]->password)) {
             session_start();
             $_SESSION["name"] = $useremail;
-            header(VERIFIED);
+            header(VERIFIED. "/" . "admin");
         } else {
             $this->view->showAdminLogin("ERROR DE INGRESO");
         }
     }
 
-    public function showPanel(){
-        session_start();
-        if(isset($_SESSION['name'])){
+    public function showPanel($param){
+        $succes = "alert-secondary";
+        if($param == null){
+            $param == "admin";
+        }
+        if($param == 1){
+            $succes = "alert-success";
+        }else if ($param == 0){
+            $succes = "alert-danger";
+        }
+        if($this->checkLoggedIn()){
             $species = $this->zoomodel->getAllSpecies();
             $animals = $this->zoomodel->getAllAnimals();
-            $this->view->showAdminPanel($species, $animals);
+            $this->view->showAdminPanel($species, $animals, $param, $succes);
         }else{
-            header(HOME);
+            header(LOGIN);
         }
-        
     }
 
     public function logout() {
-        session_start();
-        session_destroy();
-        header(HOME);
+        if($this->checkLoggedIn()){
+            session_start();
+            session_destroy();
+            header(HOME);
+        }else{
+            header(LOGIN);
+        }
     }
 
     private function checkLoggedIn(){////////////////////////////////////
         session_start();
-        if(!isset($_SESSION['name'])){
-            header(HOME);
-            die();
+        if(isset($_SESSION['name']) && $this->checkName($_SESSION['name'])){
+            return true;
         }
+        return false;
+    }
+
+    private function checkName($useremail){
+        $user = $this->model->getByUseremail($useremail);
+        if(!empty($user)){
+            return true;
+        }
+        return false;
     }
 
     private function checkTimeLogged(){
@@ -76,73 +92,81 @@ class AdminController extends Controller{
 
 
     public function abmItem() {
-        $data = new stdClass();
-        $data->abm = $_POST['abm'];
-
-        switch ($data->abm) {
-            case 'a':
-                $data->especie = $_POST['especie'];//de las que existen en la bd
-                $data->nombre = $_POST['nombre'];//nuevo
-                $data->color = $_POST['color'];
-                $data->descripcion = $_POST['descripcion'];
-                if($this->checkVoid($data)){
-                    $this->zoomodel->addItem($data);
-                }
-                break;
-            case 'b':
-                $data->animal = $_POST['animal'];//de los que existen en la bd
-                if($this->checkVoid($data) && $data->animal != '0'){
-                    $this->zoomodel->deleteItem($data);
-                }
-                break;
-            case 'm': 
-                $data->especie = $_POST['especie'];
-                $data->animal = $_POST['animal'];//de los que existen en la bd
-                $data->nombre = $_POST['nombre'];//nuevo
-                $data->color = $_POST['color'];
-                $data->descripcion = $_POST['descripcion'];
-                if($this->checkVoid($data)){
-                    $this->zoomodel->modItem($data);
-                }
-                break;
-            default:
-                header(VERIFIED);
-                break;
+        if($this->checkLoggedIn()){
+            $data = new stdClass();
+            $data->abm = $_POST['abm'];
+            $res = 0;
+            switch ($data->abm) {
+                case 'a':
+                    $data->especie = $_POST['especie'];//de las que existen en la bd
+                    $data->nombre = $_POST['nombre'];//nuevo
+                    $data->color = $_POST['color'];
+                    $data->descripcion = $_POST['descripcion'];
+                    if($this->checkVoid($data)){
+                        $res = $this->zoomodel->addItem($data);
+                    }
+                    break;
+                case 'b':
+                    $data->animal = $_POST['animal'];//de los que existen en la bd
+                    if($this->checkVoid($data) && $data->animal != '0'){
+                        $res = $this->zoomodel->deleteItem($data);
+                    }
+                    break;
+                case 'm': 
+                    $data->especie = $_POST['especie'];
+                    $data->animal = $_POST['animal'];//de los que existen en la bd
+                    $data->nombre = $_POST['nombre'];//nuevo
+                    $data->color = $_POST['color'];
+                    $data->descripcion = $_POST['descripcion'];
+                    if($this->checkVoid($data)){
+                        $res = $this->zoomodel->modItem($data);
+                    }
+                    break;
+                default:
+                header(VERIFIED. "/" . $res);
+                    break;
+            }
+            header(VERIFIED. "/" . $res);
+        }else{
+            header(LOGIN);
         }
-        header(VERIFIED);
     }
 
     public function abmCat() {
-        $data = new stdClass();
-        $data->abm = $_POST['abm'];
-
-        switch ($data->abm) {
-            case 'a':
-                $data->nombre = $_POST['nombre'];
-                $data->descripcion = $_POST['descripcion'];
-                if($this->checkVoid($data)){
-                    $this->zoomodel->addCat($data);
-                }
-                break;
-            case 'b':
-                $data->tipo = $_POST['tipo'];
-                if($this->checkVoid($data) && $data->tipo != '0'){
-                    $this->zoomodel->deleteCat($data);
-                }
-                break;
-            case 'm': 
-                $data->tipo = $_POST['tipo'];
-                $data->nombre = $_POST['nombre'];
-                $data->descripcion = $_POST['descripcion'];
-                if($this->checkVoid($data)){
-                    $this->zoomodel->modCat($data);
-                }
-                break;
-            default:
-                header(VERIFIED);
-                break;
+        if($this->checkLoggedIn()){
+            $data = new stdClass();
+            $data->abm = $_POST['abm'];
+            $res = 0;
+            switch ($data->abm) {
+                case 'a':
+                    $data->nombre = $_POST['nombre'];
+                    $data->descripcion = $_POST['descripcion'];
+                    if($this->checkVoid($data)){
+                      $res = $this->zoomodel->addCat($data);
+                    }
+                    break;
+                case 'b':
+                    $data->tipo = $_POST['tipo'];
+                    if($this->checkVoid($data) && $data->tipo != '0'){
+                        $res = $this->zoomodel->deleteCat($data);
+                    }
+                    break;
+                case 'm': 
+                    $data->tipo = $_POST['tipo'];
+                    $data->nombre = $_POST['nombre'];
+                    $data->descripcion = $_POST['descripcion'];
+                    if($this->checkVoid($data)){
+                        $res = $this->zoomodel->modCat($data);
+                    }
+                    break;
+                default:
+                    header(VERIFIED. "/" . $res);
+                    break;
+            }
+            header(VERIFIED. "/" . $res);
+        }else{
+            header(LOGIN);
         }
-        header(VERIFIED);
     }
 
     function checkVoid($data){
