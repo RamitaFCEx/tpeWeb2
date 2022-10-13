@@ -30,7 +30,7 @@
                         <a class="nav-link" href="login">Sesion</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="verified/admin">Editar</a>
+                        <a class="nav-link" href="verified/">Editar</a>
                       </li>
                       
                     </ul>

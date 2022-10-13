@@ -16,7 +16,7 @@ class AdminController extends Controller{
     }
 
     public function goAdminLogin(){
-        $this->view->showAdminLogin("");
+        $this->view->showAdminLogin(""); 
     }
 
     public function verifyAdmin() {
@@ -27,43 +27,49 @@ class AdminController extends Controller{
         if (!empty($user) && password_verify($password, $user[0]->password)) {
             session_start();
             $_SESSION["name"] = $useremail;
-            header(VERIFIED. "/" . "admin");
+            header(VERIFIED. "/");
+            die();
         } else {
             $this->view->showAdminLogin("ERROR DE INGRESO");
         }
     }
 
-    public function showPanel($param){
-        $succes = "alert-secondary";
-        if($param == null){
-            $param == "admin";
-        }
-        if($param == 1){
-            $succes = "alert-success";
-        }else if ($param == 0){
-            $succes = "alert-danger";
-        }
+    public function showPanel(){
+        
+        // $succes = "alert-secondary";
+        // if($param == 1){
+        //     $succes = "alert-success";
+        // }else if ($param == 0){
+        //     $succes = "alert-danger";
+        // }
         if($this->checkLoggedIn()){
             $species = $this->zoomodel->getAllSpecies();
             $animals = $this->zoomodel->getAllAnimals();
-            $this->view->showAdminPanel($species, $animals, $param, $succes);
+            //$this->view->showAdminPanel($species, $animals, $param, $succes);
+            $this->view->showAdminPanel($species, $animals);
         }else{
             header(LOGIN);
+            die();
         }
+
     }
 
     public function logout() {
-        if($this->checkLoggedIn()){
+        if($this->checkLoggedIn()){//PHP_SESSION_ACTIVE
             session_start();
             session_destroy();
             header(HOME);
+            die();
         }else{
             header(LOGIN);
+            die();
         }
     }
 
     private function checkLoggedIn(){////////////////////////////////////
-        session_start();
+        if(session_status() != PHP_SESSION_ACTIVE){
+            session_start();
+        }
         if(isset($_SESSION['name']) && $this->checkName($_SESSION['name'])){
             return true;
         }
@@ -95,7 +101,6 @@ class AdminController extends Controller{
         if($this->checkLoggedIn()){
             $data = new stdClass();
             $data->abm = $_POST['abm'];
-            $res = 0;
             switch ($data->abm) {
                 case 'a':
                     $data->especie = $_POST['especie'];//de las que existen en la bd
@@ -103,13 +108,13 @@ class AdminController extends Controller{
                     $data->color = $_POST['color'];
                     $data->descripcion = $_POST['descripcion'];
                     if($this->checkVoid($data)){
-                        $res = $this->zoomodel->addItem($data);
+                        $this->zoomodel->addItem($data);
                     }
                     break;
                 case 'b':
                     $data->animal = $_POST['animal'];//de los que existen en la bd
-                    if($this->checkVoid($data) && $data->animal != '0'){
-                        $res = $this->zoomodel->deleteItem($data);
+                    if($this->checkVoid($data) && $data->animal > '0'){
+                        $this->zoomodel->deleteItem($data);
                     }
                     break;
                 case 'm': 
@@ -119,16 +124,19 @@ class AdminController extends Controller{
                     $data->color = $_POST['color'];
                     $data->descripcion = $_POST['descripcion'];
                     if($this->checkVoid($data)){
-                        $res = $this->zoomodel->modItem($data);
+                        $this->zoomodel->modItem($data);
                     }
                     break;
                 default:
-                header(VERIFIED. "/" . $res);
+                    header(VERIFIED);///ACa esta el problema
+                    die();
                     break;
             }
-            header(VERIFIED. "/" . $res);
+            header(VERIFIED);
+            die();
         }else{
             header(LOGIN);
+            die();
         }
     }
 
@@ -136,19 +144,18 @@ class AdminController extends Controller{
         if($this->checkLoggedIn()){
             $data = new stdClass();
             $data->abm = $_POST['abm'];
-            $res = 0;
             switch ($data->abm) {
                 case 'a':
                     $data->nombre = $_POST['nombre'];
                     $data->descripcion = $_POST['descripcion'];
                     if($this->checkVoid($data)){
-                      $res = $this->zoomodel->addCat($data);
+                      $this->zoomodel->addCat($data);
                     }
                     break;
                 case 'b':
                     $data->tipo = $_POST['tipo'];
                     if($this->checkVoid($data) && $data->tipo != '0'){
-                        $res = $this->zoomodel->deleteCat($data);
+                        $this->zoomodel->deleteCat($data);
                     }
                     break;
                 case 'm': 
@@ -156,16 +163,18 @@ class AdminController extends Controller{
                     $data->nombre = $_POST['nombre'];
                     $data->descripcion = $_POST['descripcion'];
                     if($this->checkVoid($data)){
-                        $res = $this->zoomodel->modCat($data);
+                        $this->zoomodel->modCat($data);
                     }
                     break;
                 default:
-                    header(VERIFIED. "/" . $res);
+                    header(VERIFIED);
                     break;
             }
-            header(VERIFIED. "/" . $res);
+            header(VERIFIED);///ACa esta el problema
+            die();
         }else{
             header(LOGIN);
+            die();
         }
     }
 

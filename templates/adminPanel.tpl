@@ -1,22 +1,23 @@
 {include file="header.tpl"}
 
 <article class="adminPanel">
-    <div>
+    {* <div>
         <p class="alert {$succes}">
         {if $param == 1}
-            Query realizada con exito
+            Consulta realizada con exito
         {else if $param == 0}
-            Error query rechazada
+            Error Consulta rechazada
         {else}
             Bienvenido al panel de ABM de administradores
         {/if}
         </p>
-    </div>
+    </div> *}
     
     <div>
         <form action="abmItem" method="POST">
             <h2>ABM Items</h2>
             <small>*Todos los campos deben ser rellenados*</small>
+            <small>*Hay ({sizeOf($animals)}) animales registrados*</small>
 
             <label for="abm">Accion:</label>
             <select name="abm" id="selectABMIt">
@@ -33,13 +34,6 @@
                 {/foreach}
             </select>
 
-            <label for="especie" class="especie">Es un:</label>
-            <select name="especie" class="especie">
-                {foreach from=$species item=$specie}
-                    <option value="{$specie->id}">{$specie->nombre}</option>
-                {/foreach}
-            </select>
-
             <label for="nombre" class="caracteristica">Nombre:</label>
             <input type="text" name="nombre" class="caracteristica">
 
@@ -49,6 +43,13 @@
             <label for="descripcion" class="caracteristica">Descripcion:</label>
             <textarea name="descripcion" rows="4" cols="50" class="caracteristica"></textarea>
 
+            <label for="especie" class="especie">Es un:</label>
+            <select name="especie" class="especie">
+                {foreach from=$species item=$specie}
+                    <option value="{$specie->id}">{$specie->nombre}</option>
+                {/foreach}
+            </select>
+
             <button type="submit" class="btn btn-dark mt-4">Enviar</button>
         </form>
 
@@ -56,6 +57,7 @@
         <form action="abmCat" method="POST">
             <h2>ABM Categorias</h2>
             <small>*Todos los campos deben ser rellenados*</small>
+            <small>*Hay ({sizeOf($species)}) especies registradas*</small>
 
             <label for="abm">Accion:</label>
             <select name="abm" id="selectABMCat">
@@ -66,7 +68,7 @@
         
             <label class="hide  tipo ">Seleccionar:</label>
             <select name="tipo" class="hide tipo">
-                <option value="0" selected>Especies</option>
+                <option value="-1" selected>Especies</option>
                 {foreach from=$species item=$specie}
                     <option value="{$specie->id}">{$specie->nombre}</option>
                 {/foreach}

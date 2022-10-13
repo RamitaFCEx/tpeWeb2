@@ -15,14 +15,13 @@ class AdminView{
         $smarty->display('././templates/adminLogin.tpl');
     }
 
-    public function showAdminPanel($species, $animals, $param, $succes){
+    public function showAdminPanel($species, $animals){
         $smarty = new Smarty(); 
         $smarty->assign('species', $species);
         $smarty->assign('animals', $animals);
-        $smarty->assign('param', $param);
-        $smarty->assign('succes', $succes);
         
         $smarty->display('././templates/adminPanel.tpl');
+
     }
   
 

@@ -58,7 +58,7 @@ switch ($params[0]) {
         break;
     case 'verified'://me verifican
         $controller = new AdminController;
-        $controller->showPanel($params[1]);
+        $controller->showPanel();
         break;
     case 'logout': 
         $controller = new AdminController();
