@@ -11,7 +11,7 @@
             {if !isset($specie)}
                 <a href="{$href}" class="btn btn-outline-primary">Ver</a>
             {else}
-                <a href="{$specie}" class="btn btn-outline-primary">Ir a la especie</a>
+                <a href="{$specie}" class="btn btn-outline-success">Ir a la especie</a>
             {/if}
         </div>
     </div>

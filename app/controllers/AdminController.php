@@ -99,7 +99,7 @@ class AdminController extends Controller{
                     break;
                 case 'b':
                     $data->animal = $_POST['animal'];//de los que existen en la bd
-                    if($this->checkVoid($data) && $data->animal > '0'){
+                    if($this->checkVoid($data)){
                         $this->zoomodel->deleteItem($data);
                     }
                     break;
@@ -140,7 +140,7 @@ class AdminController extends Controller{
                     break;
                 case 'b':
                     $data->tipo = $_POST['tipo'];
-                    if($this->checkVoid($data) && $data->tipo != '0'){
+                    if($this->checkVoid($data)){
                         $this->zoomodel->deleteCat($data);
                     }
                     break;
