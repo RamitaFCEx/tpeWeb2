@@ -35,23 +35,14 @@ class AdminController extends Controller{
     }
 
     public function showPanel(){
-        
-        // $succes = "alert-secondary";
-        // if($param == 1){
-        //     $succes = "alert-success";
-        // }else if ($param == 0){
-        //     $succes = "alert-danger";
-        // }
         if($this->checkLoggedIn()){
             $species = $this->zoomodel->getAllSpecies();
             $animals = $this->zoomodel->getAllAnimals();
-            //$this->view->showAdminPanel($species, $animals, $param, $succes);
             $this->view->showAdminPanel($species, $animals);
         }else{
             header(LOGIN);
             die();
         }
-
     }
 
     public function logout() {
@@ -91,11 +82,6 @@ class AdminController extends Controller{
         } 
         $_SESSION['LAST_ACTIVITY'] = time(); // actualiza el último instante de actividad
     }////////////////////////////////////////////////////////////////////////
-    
-
-
-
-
 
     public function abmItem() {
         if($this->checkLoggedIn()){
