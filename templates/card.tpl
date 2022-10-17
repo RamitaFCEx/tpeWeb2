@@ -8,7 +8,11 @@
             <p class="card-text">{$details}</p>
         </div>
         <div>
-            <a href="{$href}" class="btn btn-outline-primary">Ver</a>
+            {if !isset($specie)}
+                <a href="{$href}" class="btn btn-outline-primary">Ver</a>
+            {else}
+                <a href="{$specie}" class="btn btn-outline-primary">Ir a la especie</a>
+            {/if}
         </div>
     </div>
 

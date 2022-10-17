@@ -27,40 +27,33 @@ class ZooController extends Controller{
             'title' => "Ver todos los animales",
             'img' => "portadaRazas",
             'href' => "all_animals",
-            'descrip' => "Descubre todos nuestros animales ヽ(✿ﾟ▽ﾟ)ノ",
+            'descrip' => "Descubre todos nuestros animales ヽ(✿ﾟ▽ﾟ)/",
         ];
 
         $cardHomeEspecies = (object) [
             'title' => "Ver todas las especies",
             'img' => "siluetasEspecies",
             'href' => "all_species",
-            'descrip' => "Descubre todas nuestras especies ヽ(✿ﾟ▽ﾟ)ノ",
+            'descrip' => "Descubre todas nuestras especies ヽ(✿ﾟ▽ﾟ)/",
         ];
 
         $arrayCards = [$cardHomeAnimales, $cardHomeEspecies];
-   
         $this->view->showHome($arrayCards);
     } 
 
     function listAllAnimals(){//muestra todos los items join con categorias
         $razas = $this->model->getAllAnimals();
-        $buttons = [$this->buttonSpecies];
-
-        $this->view->showAnimals($razas, $buttons); 
+        $this->view->showAnimals($razas);  
     }
 
     function listAllSpecies(){//muestra todas las categorias
         $species = $this->model->getAllSpecies();
-        $buttons = [$this->buttonAnimals];
-
-        $this->view->showSpecies($species, $buttons); 
+        $this->view->showSpecies($species); 
     }
 
-    function listOneSpecie($idSpecie){//muesrta los items de una categoria
+    function listOneSpecie($idSpecie){//muestra los items de una categoria
         $specie = $this->model->getAllAnimalsOfSpecie($idSpecie);//trae todos los items
-        $buttons = [$this->buttonSpecies, $this->buttonAnimals];
-
-        $this->view->showAnimals($specie, $buttons); 
+        $this->view->showAnimals($specie); 
     }
 
     function listOneAnimal($id){//muestra todos los items join con categorias
@@ -70,7 +63,6 @@ class ZooController extends Controller{
             'ref' => "one_species/".$razas[0]->id_especie_fk,
         ]; 
         $buttons = [$this->buttonSpecies, $this->buttonAnimals, $buttonSpecie];
-
 
         $this->view->showAnimals($razas, $buttons); 
     }

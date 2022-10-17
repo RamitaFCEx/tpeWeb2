@@ -21,8 +21,6 @@ if (!empty($_REQUEST['action'])) {
     $action = $_REQUEST['action'];  
 }
 
-// parsea la accion Ej: about/juan --> ['about', 'juan']
-
 $params = explode('/', $action); // genera un arreglo
 
 //var_dump($params);
@@ -46,7 +44,7 @@ switch ($params[0]) {
         break;
     case 'animal'://un solo animal
         $controller = new ZooController;
-        $controller->listOneAnimal($params[1], $params[2]);
+        $controller->listOneAnimal($params[1]);
         break;
     case 'login'://entro a login con boton admin
         $controller = new AdminController;

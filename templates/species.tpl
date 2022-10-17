@@ -11,5 +11,4 @@
     {/foreach}  
 </article>
 
-{include file="inferiorNav.tpl" buttons=$buttons}
 {include file="footer.tpl"}
