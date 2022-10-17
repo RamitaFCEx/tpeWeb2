@@ -72,7 +72,7 @@ class ZooModel{
         ."VALUES(?, ?)");
 
         try{
-            return $sentencia->execute(array($data->nombre, $data->descripcion));
+            $sentencia->execute(array($data->nombre, $data->descripcion));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }
@@ -83,7 +83,7 @@ class ZooModel{
         $sentencia = $db->prepare( "DELETE FROM especie WHERE id=?");
 
         try{
-            return $sentencia->execute(array($data->tipo));
+            $sentencia->execute(array($data->tipo));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }
@@ -94,7 +94,7 @@ class ZooModel{
         $sentencia = $db->prepare("UPDATE especie SET nombre=? , descripcion=? WHERE id=?");
 
         try{
-            return $sentencia->execute(array($data->nombre, $data->descripcion, $data->tipo));
+            $sentencia->execute(array($data->nombre, $data->descripcion, $data->tipo));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }
@@ -105,7 +105,7 @@ class ZooModel{
         $sentencia = $db->prepare( "INSERT INTO raza(nombre, color, descripcion, id_especie_fk)"."VALUES(?, ?, ?, ?)");
 
         try{
-            return $sentencia->execute(array($data->nombre, $data->color, $data->descripcion, $data->especie));
+            $sentencia->execute(array($data->nombre, $data->color, $data->descripcion, $data->especie));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }
@@ -116,7 +116,7 @@ class ZooModel{
         $sentencia = $db->prepare( "DELETE FROM raza WHERE id=?");
 
         try{
-            return $sentencia->execute(array($data->animal));
+            $sentencia->execute(array($data->animal));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }
@@ -127,7 +127,7 @@ class ZooModel{
         $sentencia = $db->prepare("UPDATE raza SET nombre=? , color=? , descripcion=? , id_especie_fk=? WHERE id=?");
         
         try{
-            return $sentencia->execute(array($data->nombre, $data->color, $data->descripcion, $data->especie, $data->animal));
+            $sentencia->execute(array($data->nombre, $data->color, $data->descripcion, $data->especie, $data->animal));
         }catch(PDOException  $ex){
             header(VERIFIED);
         }

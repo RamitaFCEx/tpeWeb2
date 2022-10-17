@@ -14,7 +14,7 @@ class ZooView{
         $smarty->assign('arrayCards', $arrayCards);
         $smarty->display('././templates/home.tpl');
     }
-
+ 
     function showAnimals($razas){
         $smarty = new Smarty();
         if($razas!=null && sizeof($razas)>=1){

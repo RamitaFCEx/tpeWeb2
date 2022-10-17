@@ -4,22 +4,9 @@ include_once 'app/views/ZooView.php';
 include_once 'Controller.php';
 
 class ZooController extends Controller{
-    private $buttonSpecies;
-    private $buttonAnimals;
-    
-
     function __construct(){ 
         $this->model = new ZooModel();
         $this->view = new ZooView();
-        $this->buttonAnimals = (object) [
-            'sign' => "Ir a animales",
-            'ref' => "all_animals",
-        ];
-        $this->buttonSpecies = (object) [
-            'sign' => "Ir a especies",
-            'ref' => "all_species",
-        ];
-    
     }
 
     function goHome (){//muestra el home
@@ -58,13 +45,7 @@ class ZooController extends Controller{
 
     function listOneAnimal($id){//muestra todos los items join con categorias
         $razas = $this->model->getOneAnimal($id);
-        $buttonSpecie = (object) [
-            'sign' => "Ir a la especie",
-            'ref' => "one_species/".$razas[0]->id_especie_fk,
-        ]; 
-        $buttons = [$this->buttonSpecies, $this->buttonAnimals, $buttonSpecie];
-
-        $this->view->showAnimals($razas, $buttons); 
+        $this->view->showAnimals($razas); 
     }
     
 }
